@@ -1,0 +1,201 @@
+body {
+  background: rgb(246, 245, 240);
+  color: rgb(226, 212, 198);
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+h1 {
+  text-shadow: 2px 7px 5px rgba(143, 136, 129, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding-top: 1rem;
+}
+.task-app {
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: left;
+}
+
+.task-app h1 {
+  text-shadow: 2px 7px 5px rgba(143, 136, 129, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* task list */
+
+.task-principal-list {
+  flex: 50%;
+  width: 600px;
+  min-height: 500px;
+  background-color: rgb(243, 216, 209);
+  padding: 25px;
+  margin: 30px 20px;
+  border-radius: 26px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.con-title {
+  color: rgb(189, 175, 176);
+  text-shadow: 2px 2px 2px rgba(206, 89, 55, 0);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* task */
+
+.task-container {
+  width: 500px;
+  min-height: 65px;
+  margin: 5px 0;
+  padding: 8px 15px 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 7px;
+  background-color: rgb(199, 187, 188);
+  color: white;
+  border: 1px solid rgb(189, 175, 175);
+  cursor: pointer;
+}
+
+#timer {
+  margin: 1rem;
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.timer-con {
+  text-align: center;
+  flex: 50%;
+  width: 600px;
+  min-height: 500px;
+  padding: 25px;
+  margin: 30px 20px;
+  border-radius: 26px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgb(199, 187, 188);
+  .con-title {
+    color: rgba(243, 216, 209);
+  }
+}
+
+.timer-con span {
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.timer-con label {
+  margin: 1rem;
+  font-size: 20px;
+  color: white;
+}
+
+.timer-con .modal-content h2 {
+  margin-bottom: 1.3rem;
+}
+
+.timer-input-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.timer-input {
+  width: 70px;
+  background-color: aliceblue;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid rgb(189, 175, 176);
+  outline: none;
+  margin: 0px 5px;
+  text-align: center;
+}
+.validation-message {
+  color: white;
+  font-size: 1.2rem;
+}
+
+/*timer modal*/
+.timer-con .modal-content h2 {
+  margin-bottom: 1.3rem;
+}
+
+/* colores */
+.task-container:nth-child(3n + 1) {
+  background-color: rgb(189, 175, 176);
+}
+.task-container:nth-child(3n + 2) {
+  background-color: rgb(206, 214, 224);
+}
+.task-container:nth-child(3n + 3) {
+  background-color: #e9ccb1;
+}
+/* texto */
+.task-text {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
+}
+
+.task-icon {
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+}
+
+/* task complete */
+
+.task-container.complete {
+  text-decoration: line-through;
+  background-color: rgba(56, 49, 50, 0.993), 0.644;
+  opacity: 0.5;
+}
+
+.task-button-timer {
+  margin: 0.3rem;
+  padding: 15px;
+  font-size: 20px;
+  background-color: rgb(243, 216, 209);
+  border: none;
+  border-radius: 26px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+  border: 2px solid rgb(189, 175, 176);
+
+}
+
+.input {
+  text-align: center;
+}
+
+.succes-message {
+  border-radius: 7px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 1rem;
+  padding: 0.6rem;
+  display: inline-block;
+  background-color: rgb(243, 216, 209);
+  border: 2px solid rgb(189, 175, 176);
+}
+
+.fix-timer-con {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  margin: 0 1rem;
+  justify-content: space-between;
+}
+.fix-timer-con .fix-timer .task-button-timer {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
