@@ -57,6 +57,9 @@
     "concurrently": "^8.0.1",
     "nodemon": "^2.0.22"
   },
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC"
