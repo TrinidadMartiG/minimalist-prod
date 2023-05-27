@@ -1,5 +1,6 @@
 .task-list-container{
     display:flex;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 15px;
@@ -16,7 +17,7 @@
 .task-input{
     background-color: aliceblue;
     font-size: 20px;
-    width: 350px;
+    width: auto;
     border-radius: 5px;
     border: 2px solid rgb(189, 175, 176);
     outline: none;

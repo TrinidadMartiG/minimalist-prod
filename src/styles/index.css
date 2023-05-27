@@ -1,15 +1,87 @@
+@media (max-width: 480px) { /* 480px is a common breakpoint for mobile devices */
+  body {
+    margin-top: 5%; /* Change fixed px to relative % */
+  }
+
+  h1, .main-title {
+    font-size: 1.5rem; /* Already responsive unit */
+  }
+
+  .task-app {
+    padding: 1.5%; /* Change fixed px to relative % */
+  }
+
+  .task-principal-list,
+  .timer-con {
+    width: calc(100% - 5%); /* Change fixed px to relative % */
+    padding: 4%; /* Change fixed px to relative % */
+    margin: 4% 2.5%; /* Change fixed px to relative % */
+  }
+
+  .task-container {
+    width: calc(100% - 7.5%); /* Change fixed px to relative % */
+    font-size: 0.9rem; /* Already responsive unit */
+  }
+
+  #timer {
+    font-size: 1.5rem; /* Already responsive unit */
+  }
+
+  .timer-input {
+    width: 12rem; /* Change fixed px to relative rem */
+    font-size: 1.8rem; /* Change fixed px to relative rem */
+  }
+
+  .fix-timer-con {
+    padding: 2.5%; /* Change fixed px to relative % */
+    margin: 0 1.25%; /* Change fixed px to relative % */
+  }
+
+  .fix-timer-con .fix-timer .task-button-timer {
+    height: 3rem; /* Change fixed px to relative rem */
+    width: 3rem; /* Change fixed px to relative rem */
+  }
+}
+
+@media (max-width: 850px) {
+  .task-app {
+    padding: 1rem 2.5rem;
+    display: flex;
+    flex-direction: column;  /* items will stack vertically */
+    align-items: center;
+  }
+
+  .task-principal-list{
+    width: auto;
+    margin: 15px 20px;
+    justify-content: center;
+  }
+  .timer-con {
+    width: auto;
+    margin: 15px 20px;
+    justify-content: center;
+  }
+
+  .task-container {
+    width: 500px;
+  }
+}
+
 body {
   background: rgb(246, 245, 240);
   color: rgb(226, 212, 198);
   box-sizing: border-box;
-  margin-top: 40px;
+  margin-top: 2.5rem;
 }
-
+.main-title{
+  color: rgb(134, 130, 131);
+}
 h1 {
-  text-shadow: 2px 7px 5px rgba(143, 136, 129, 0.3),
-    0px -4px 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 0.125rem 0.438rem 0.313rem rgba(143, 136, 129, 0.3),
+  0px -0.25rem 0.625rem rgba(255, 255, 255, 0.3);
   text-align: center;
   padding-top: 1rem;
+
 }
 .task-app {
   padding: 1rem 2.5rem;
@@ -26,11 +98,12 @@ h1 {
 
 .task-principal-list {
   flex: 50%;
-  width: 600px;
-  min-height: 500px;
+  width: 34.5rem;
+  min-height: 25rem;
   background-color: rgb(243, 216, 209);
-  padding: 25px;
-  margin: 30px 20px;
+  padding: 1.5rem;
+
+  margin: 1.8rem 1.2rem;
   border-radius: 26px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -60,59 +133,8 @@ h1 {
   cursor: pointer;
 }
 
-#timer {
-  margin: 1rem;
-  color: white;
-  font-weight: 700;
-  font-size: 2rem;
-}
-.timer-con {
-  text-align: center;
-  flex: 50%;
-  width: 600px;
-  min-height: 500px;
-  padding: 25px;
-  margin: 30px 20px;
-  border-radius: 26px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: rgb(199, 187, 188);
-  .con-title {
-    color: rgba(243, 216, 209);
-  }
-}
 
-.timer-con span {
-  color: white;
-  font-weight: 500;
-  font-size: 1.5rem;
-}
 
-.timer-con label {
-  margin: 1rem;
-  font-size: 20px;
-  color: white;
-}
-
-.timer-con .modal-content h2 {
-  margin-bottom: 1.3rem;
-}
-
-.timer-input-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.timer-input {
-  width: 70px;
-  background-color: aliceblue;
-  font-size: 20px;
-  border-radius: 5px;
-  border: 2px solid rgb(189, 175, 176);
-  outline: none;
-  margin: 0px 5px;
-  text-align: center;
-}
 .validation-message {
   color: white;
   font-size: 1.2rem;
@@ -157,45 +179,3 @@ h1 {
   opacity: 0.5;
 }
 
-.task-button-timer {
-  margin: 0.3rem;
-  padding: 15px;
-  font-size: 20px;
-  background-color: rgb(243, 216, 209);
-  border: none;
-  border-radius: 26px;
-  cursor: pointer;
-  outline: none;
-  color: white;
-  border: 2px solid rgb(189, 175, 176);
-
-}
-
-.input {
-  text-align: center;
-}
-
-.succes-message {
-  border-radius: 7px;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 1rem;
-  padding: 0.6rem;
-  display: inline-block;
-  background-color: rgb(243, 216, 209);
-  border: 2px solid rgb(189, 175, 176);
-}
-
-.fix-timer-con {
-  display: flex;
-  flex-direction: row;
-  padding: 2rem;
-  margin: 0 1rem;
-  justify-content: space-between;
-}
-.fix-timer-con .fix-timer .task-button-timer {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-}

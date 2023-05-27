@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import timerSound from '../sounds/beep-beep.mp3'
+import '../styles/TimerStyles.css'
+
 
 let Timer = () => {
   const [hours, setHours] = useState('00')
