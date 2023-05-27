@@ -1,7 +1,8 @@
 @media (max-width: 768px) {
-    .task-input{
-      width: 320px;
-    }}
+  .task-input {
+    width: 320px;
+  }
+}
 
 #timer {
   margin: 1rem;
@@ -10,12 +11,13 @@
   font-size: 2rem;
 }
 .timer-con {
+  max-width: fit-content;
   text-align: center;
   flex: 50%;
   width: 500px;
   min-height: 420px;
   max-height: min-content;
-  height: auto;
+  height: min-content;
   padding: 25px;
   margin: 30px 20px;
   border-radius: 26px;

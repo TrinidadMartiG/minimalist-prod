@@ -84,6 +84,7 @@ h1 {
 
 }
 .task-app {
+  justify-content: center;
   padding: 1rem 2.5rem;
   display: flex;
   align-items: left;
@@ -102,7 +103,7 @@ h1 {
   min-height: 25rem;
   background-color: rgb(243, 216, 209);
   padding: 1.5rem;
-
+  max-width: fit-content;
   margin: 1.8rem 1.2rem;
   border-radius: 26px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

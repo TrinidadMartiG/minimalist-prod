@@ -58,7 +58,7 @@ let TaskList = () => {
         return resp.json();
       })
       .then((newTask) => {
-        const taskUpdated = [newTask, ...tasks]
+        const taskUpdated = [...tasks,newTask]
         setTasks(taskUpdated)
       })
       .catch((error) => {
