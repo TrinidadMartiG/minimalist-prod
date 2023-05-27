@@ -7,7 +7,7 @@ let TaskList = () => {
   const [input, setInput] = useState('')
 
   const fetchTask = useCallback(() => {
-    return fetch('minimalist-prod-backend-production.up.railway.app/api/tasks')
+    return fetch('https://minimalist-prod-backend-production.up.railway.app/api/tasks')
       .then((data) => data.json())
       .then((response) => {
         setTasks(response)
@@ -15,7 +15,7 @@ let TaskList = () => {
   }, [])
 
   const modifyTask = (id, newData) => {
-    fetch(`minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
+    fetch(`https://minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
       method: 'PUT',
       body: JSON.stringify(newData),
       headers: {
@@ -44,7 +44,7 @@ let TaskList = () => {
   },[])
 
   const addTask = (taskFromDealSend) => {
-    fetch('minimalist-prod-backend-production.up.railway.app/api/tasks', {
+    fetch('https://minimalist-prod-backend-production.up.railway.app/api/tasks', {
       method: 'POST',
       body: JSON.stringify(taskFromDealSend),
       headers: {
@@ -67,7 +67,7 @@ let TaskList = () => {
   };
 
   const deleteTask = (id,label) => {
-    fetch(`minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
+    fetch(`https://minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
       method: 'DELETE',
     })
       .then((resp) => {
