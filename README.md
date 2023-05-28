@@ -11,6 +11,11 @@ This project is a Task Management Application built with a modern technology sta
 
 The application is built with a responsive design. It uses CSS media queries to adapt the layout and font sizes for smaller screens, ensuring a great user experience on all devices.
 
+
+## Next Features
+ * create sub-tasks for a principal task
+ * add a register/login feature
+ 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
