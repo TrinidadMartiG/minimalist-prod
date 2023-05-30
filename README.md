@@ -1,6 +1,6 @@
 # Task Management Application
 
-This project is a Task Management Application built with a modern technology stack. Users can create, edit, and delete tasks. It also includes a timer functionality for tasks.
+This project is a Task Management Application built with MERN stack. Users can create, edit, and delete tasks. It also includes a timer functionality for tasks.
 
 ## Technology Stack
 
