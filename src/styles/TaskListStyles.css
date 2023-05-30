@@ -1,37 +1,19 @@
-.task-list-container{
-    display:flex;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 15px;
+.task-list-container {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  color: rgb(78, 76, 76);
 }
 
-.task-form{
-    display:flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+.task-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0;
 }
 
 /* text-area */
-.task-input{
-    background-color: aliceblue;
-    font-size: 20px;
-    width: auto;
-    border-radius: 5px;
-    border: 2px solid rgb(189, 175, 176);
-    outline: none;
-    margin: 0px 5px;
-}
-
-/* button */
-.task-button{
-    padding:16px;
-    font-size: 20px;
-    background-color: rgb(189, 175, 176);
-    border: none;
-    border-radius: 26px;
-    cursor: pointer; 
-    outline:none;
-    color: white
-}
+/* button *//*# sourceMappingURL=TaskListStyles.css.map */

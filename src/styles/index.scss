@@ -1,92 +1,92 @@
-* {
-  font: bold;
+@import './variables.scss';
+
+*{
+  font:bold;
 }
 
 body {
-  background: linear-gradient(180deg, white, #ff4747 850%) no-repeat;
-  color: rgb(78, 76, 76);
+  background: $linear-gradient-red;
+  color: $secondary-color;
   box-sizing: border-box;
   margin-top: 2.5rem;
 }
-
 .main-title {
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
 }
 
-.nav-title {
+.nav-title{
   font-size: 1em;
 }
-
 h1 {
-  text-shadow: 0.125rem 0.438rem 0.313rem rgba(143, 136, 129, 0.3), 0px -0.25rem 0.625rem rgba(255, 255, 255, 0.3);
+  text-shadow: 0.125rem 0.438rem 0.313rem rgba(143, 136, 129, 0.3),
+    0px -0.25rem 0.625rem rgba(255, 255, 255, 0.3);
   text-align: center;
   padding-top: 1rem;
 }
-
 .task-app {
   justify-content: center;
   padding: 1rem 2.5rem;
   display: flex;
   align-items: left;
-}
-.task-app h1 {
-  color: rgb(78, 76, 76);
+  h1{
+    color: $secondary-color;
+  }
 }
 
 .task-app h1 {
-  text-shadow: 2px 7px 5px rgba(143, 136, 129, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+  text-shadow: 2px 7px 5px rgba(143, 136, 129, 0.3),
+    0px -4px 10px rgba(255, 255, 255, 0.3);
 }
 
 /* task list */
+
 .task-principal-list {
   flex: 50%;
   width: 34.5rem;
-  min-width: -moz-fit-content;
   min-width: fit-content;
   min-height: 25rem;
-  background-color: rgb(255, 254, 254);
+  background-color: $primary-color;
   padding: 1.5rem;
-  max-width: -moz-fit-content;
   max-width: fit-content;
   margin: 1.8rem 1.2rem;
   border-radius: 26px;
-  border: 2px #ffcbcb;
+  border: 2px darken($primary-color, 10%);
   border-style: ridge;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  .task-button{
+    padding:0.35rem;
+    font-size: 20px;
+    background-color: $red;
+    border: none;
+    border-radius: 15%;
+    cursor: pointer; 
+    outline:none;
+    color: white;
+    font-weight: bold;
+    svg{
+      color: white;
+    }
+    .task-input{
+      background-color: white;
+      font-size: 20px;
+      min-width: 1rem;
+      border-radius: 5px;
+      border: 2px solid $borders;
+      outline: none;
+      margin: 0px 5px;
+      &:hover{
+          border: 2px solid lighten($red,5%) !important;
+      }
+  }
 }
-.task-principal-list .task-button {
-  padding: 0.35rem;
-  font-size: 20px;
-  background-color: #ff4747;
-  border: none;
-  border-radius: 15%;
-  cursor: pointer;
-  outline: none;
-  color: white;
-  font-weight: bold;
-}
-.task-principal-list .task-button svg {
-  color: white;
-}
-.task-principal-list .task-button .task-input {
-  background-color: white;
-  font-size: 20px;
-  min-width: 1rem;
-  border-radius: 5px;
-  border: 2px solid #ffcbcb;
-  outline: none;
-  margin: 0px 5px;
-}
-.task-principal-list .task-button .task-input:hover {
-  border: 2px solid #ff6161 !important;
 }
 
-.void {
+.void{
   padding: 3rem;
 }
-
 .con-title {
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
   text-shadow: 2px 2px 2px rgba(206, 89, 55, 0);
   align-items: center;
   justify-content: center;
@@ -94,6 +94,7 @@ h1 {
 }
 
 /* task */
+
 .task-container {
   width: 350px;
   font-weight: bold;
@@ -104,13 +105,13 @@ h1 {
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
-  background-color: #ff4747;
-  color: rgb(255, 254, 254);
+  background-color: lighten(red, 14%);
+  color: $primary-color;
   cursor: pointer;
 }
 
 .validation-message {
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
   font-size: 1.2rem;
 }
 
@@ -136,6 +137,7 @@ h1 {
 }
 
 /* task complete */
+
 .task-container.complete {
   text-decoration: line-through;
   background-color: rgba(56, 49, 50, 0.993), 0.644;
@@ -160,6 +162,7 @@ h1 {
     flex-direction: column; /* items will stack vertically */
     align-items: center;
   }
+
   .task-principal-list {
     width: auto;
     margin: 15px 20px;
@@ -170,12 +173,15 @@ h1 {
     margin: 15px 20px;
     justify-content: center;
   }
+
   .task-container {
     width: 250px !important;
   }
+
   .task-button {
     padding: 0.35rem !important;
   }
+
   .button-text {
     display: none;
   }
@@ -183,52 +189,61 @@ h1 {
     display: block;
   }
 }
+
 @media (max-width: 480px) {
   /* 480px is a common breakpoint for mobile devices */
   body {
     margin-top: 5%;
     font-weight: 200; /* Change fixed px to relative % */
   }
+
   h1,
   .main-title {
     padding: 1rem;
     width: 100%;
     font-size: 1.85rem; /* Already responsive unit */
   }
+
   .task-app {
     padding: 1.5%; /* Change fixed px to relative % */
   }
+
   .task-principal-list,
   .timer-con {
-    min-width: -moz-min-content;
     min-width: min-content;
     width: 80vh !important; /* Change fixed px to relative % */
     margin: 1rem 0; /* Change fixed px to relative % */
     padding: 0.5rem;
   }
+
   .task-container {
     width: auto;
     font-size: 0.9rem; /* Already responsive unit */
   }
+
   .task-button {
     border-radius: 15% !important;
     padding: 0.35rem !important;
   }
+
   #timer {
     font-size: 1.5rem; /* Already responsive unit */
   }
+
   .timer-input {
     width: 2.5rem !important; /* Change fixed px to relative rem */
     font-size: 1.8rem; /* Change fixed px to relative rem */
   }
+
   .fix-timer-con {
     padding: 0 !important; /* Change fixed px to relative % */
     margin: 0 1.25%; /* Change fixed px to relative % */
   }
+
   .fix-timer-con .fix-timer .task-button-timer {
     height: 3rem !important; /* Change fixed px to relative rem */
     width: 3rem !important; /* Change fixed px to relative rem */
     margin: 0.3rem;
     padding: 0.35rem;
   }
-}/*# sourceMappingURL=index.css.map */
+}

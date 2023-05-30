@@ -1,37 +1,37 @@
+@import './variables.scss';
+
+
 #timer {
   padding: 1rem;
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
   font-weight: 700;
   font-size: 2rem;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  border-top: 1px solid ;
+  border-bottom: 1px solid ;
 }
 
 .timer-con {
-  max-width: -moz-fit-content;
   max-width: fit-content;
   text-align: center;
   flex: 50% 1;
   width: 34.5rem;
   max-width: fit-content;
-  max-height: -moz-min-content;
   max-height: min-content;
-  height: -moz-min-content;
   height: min-content;
   padding: 1.5rem;
   margin: 1.8rem 1.2rem;
-  border-radius: 26px;
+  border-radius: 26px ;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border: 2px #ffcbcb;
+  border: 2px darken($primary-color,10%);
   border-style: ridge;
-  background-color: rgb(255, 254, 254);
-}
-.timer-con .con-title {
-  color: rgb(78, 76, 76);
+  background-color: $primary-color;
+  .con-title {
+    color: $secondary-color;
+  }
 }
 
 .timer-con span {
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
   font-weight: 500;
   font-size: 1.5rem;
 }
@@ -56,35 +56,33 @@
 
 .timer-input {
   width: 70px;
-  background-color: rgb(255, 254, 254);
+  background-color: $primary-color;
   font-size: 20px;
   border-radius: 5px;
   border: 2px solid rgb(189, 175, 176);
   outline: none;
   margin: 0px 5px;
   text-align: center;
+  &:hover{
+    border: 2px solid $red;
 }
-.timer-input:hover {
-  border: 2px solid #ff4747;
 }
-
 .task-button-timer {
   border: none;
-  height: -moz-fit-content;
   height: fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   margin: 0.3rem;
   font-size: 1.5rem;
-  background-color: #ff4747;
+  background-color: $red;
   font-weight: bold;
   border-radius: 15%;
   cursor: pointer;
   outline: none;
   color: white;
-}
-.task-button-timer span, .task-button-timer svg {
-  color: white;
+  span, svg{
+    color: white ;
+  }
+  
 }
 
 .input {
@@ -98,13 +96,13 @@
 
 .succes-message {
   border-radius: 6px;
-  color: rgb(78, 76, 76);
+  color: $secondary-color;
   font-size: 1.2rem;
   font-weight: 700;
   margin: 1rem;
   padding: 0.6rem;
   display: inline-block;
-  background-color: #ffe5e5;
+  background-color: $third-color;
 }
 
 .fix-timer-con {
@@ -114,10 +112,9 @@
   margin: 0 0.25rem;
   justify-content: space-evenly;
 }
-
 .fix-timer-con .fix-timer .task-button-timer {
   height: 3.5rem;
   width: 3.5rem;
   font-weight: bold;
-  background-color: #ff4747;
-}/*# sourceMappingURL=TimerStyles.css.map */
+  background-color: $red;
+}
