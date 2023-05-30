@@ -1,94 +1,62 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import '../styles/TaskListStyles.css'
+import React, { useState, useEffect } from 'react'
+import '../styles/TaskListStyles.scss'
 import Task from './TaskComponent'
+import { AiOutlinePlusCircle } from 'react-icons/ai'
+import { fetchTasks, modifyTask, addTask, deleteTask } from '../api/api.js';
+
 
 let TaskList = () => {
   const [tasks, setTasks] = useState([])
   const [input, setInput] = useState('')
 
-  const fetchTask = useCallback(() => {
-    return fetch('https://minimalist-prod-backend-production.up.railway.app/api/tasks')
-      .then((data) => data.json())
-      .then((response) => {
-        setTasks(response)
-      })
-  }, [])
+  useEffect(() => {
+    fetchTasks()
+      .then(setTasks)
+      .catch((error) => console.error(error))
+  },[])
 
-  const modifyTask = (id, newData) => {
-    fetch(`https://minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(newData),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then((resp) => {
-      if (!resp.ok) {
-        throw Error(resp.statusText);
-      }
-      return resp.json();
-    })
+  const handleModifyTask = (id, newData) => {
+    modifyTask(id, newData)
     .then((updatedTask) => {
       const updatedTasks = tasks.map((task) =>
         task._id === updatedTask._id ? updatedTask : task
       )
       setTasks(updatedTasks)
+      console.log('Task modified', updatedTasks)
     })
     .catch((error) => {
       console.error('Error:', error)
     })
   }
 
-  useEffect(() => {
-    fetchTask().catch((error) => console.error(error))
-  },[])
+const handleDeleteTask = (id, label) => {
+  deleteTask(id)
+  .then(()=>{
+    const updatedTasks = tasks.filter((task) => task._id !== id)
+    setTasks(updatedTasks)
+    console.log('Task deleted:', label,'id:',id)
+  })
+  .catch((error)=>{
+    console.log(error)
+  });
+};
 
-  const addTask = (taskFromDealSend) => {
-    fetch('https://minimalist-prod-backend-production.up.railway.app/api/tasks', {
-      method: 'POST',
-      body: JSON.stringify(taskFromDealSend),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((resp) => {
-        if (!resp.ok) {
-          throw Error(resp.statusText);
-        }
-        return resp.json();
-      })
-      .then((newTask) => {
-        const taskUpdated = [...tasks,newTask]
-        setTasks(taskUpdated)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      });
-  };
-
-  const deleteTask = (id,label) => {
-    fetch(`https://minimalist-prod-backend-production.up.railway.app/api/tasks/${id}`, {
-      method: 'DELETE',
-    })
-      .then((resp) => {
-        if (!resp.ok) {
-          throw Error(resp.statusText);
-        }
-        // If delete was successful, update state
-        const taskUpdated = tasks.filter((task) => task._id !== id)
-        setTasks(taskUpdated)
-        console.log('Task deleted:', label,'id:',id)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      });
-  };
+const handleAddTask = (newTask) => {
+  addTask(newTask)
+  .then((addedTask)=>{
+    const updatedTasks  = [...tasks, addedTask]
+    setTasks(updatedTasks)
+    console.log('New task added:', newTask)
+  })
+  .catch((error)=>{
+    console.log('Error:',error)
+  });
+};
 
   const dealChange = (e) => {
     /* extrae valor de campo de texto */
     e.preventDefault()
     setInput(e.target.value)
-    console.log(e.target.value, 'dealChange e.target.value')
   }
 
   const completeTask = (id) => {
@@ -101,7 +69,7 @@ let TaskList = () => {
     setTasks(taskUpdated)
   }
 
-  const dealSend = (e) => {
+  const handleFormSubmit  = (e) => {
     /* evita que se recarge app completa */
     e.preventDefault()
 
@@ -109,7 +77,7 @@ let TaskList = () => {
       label: input,
     }
     /*task.onSubmit(newTask);*/
-    addTask(newTask)
+    handleAddTask(newTask)
     setInput('')
     console.log('new task added', newTask)
   }
@@ -125,8 +93,9 @@ let TaskList = () => {
           value={input}
           onChange={dealChange}
         />
-        <button className="task-button" onClick={dealSend}>
-          Add Task
+        <button className="task-button" onClick={handleFormSubmit }>
+         <span className='button-text'>Add</span> 
+          <AiOutlinePlusCircle className='icon' />
         </button>
       </form>
 
@@ -139,8 +108,8 @@ let TaskList = () => {
             label={elm.label}
             complete={elm.complete}
             completeTask={completeTask}
-            deleteTask={deleteTask}
-            modifyTask={modifyTask}
+            deleteTask={handleDeleteTask}
+            modifyTask={handleModifyTask}
           />
         ))}
       </div>

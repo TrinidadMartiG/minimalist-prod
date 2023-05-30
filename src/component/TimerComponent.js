@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import timerSound from '../sounds/beep-beep.mp3'
-import '../styles/TimerStyles.css'
-
+import '../styles/TimerStyles.scss'
+import { AiOutlinePlayCircle, AiOutlineStop } from 'react-icons/ai'
 
 let Timer = () => {
   const [hours, setHours] = useState('00')
@@ -11,8 +11,7 @@ let Timer = () => {
   const [isRunning, setIsRunning] = useState(false)
   const [validationMessage, setValidationMessage] = useState('')
   const [hasEnded, setHasEnded] = useState(false)
-  
-  
+
   const formatTime = (totalSeconds) => {
     const hours = Math.floor(totalSeconds / 3600)
     const minutes = Math.floor((totalSeconds % 3600) / 60)
@@ -20,7 +19,7 @@ let Timer = () => {
 
     return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`
   }
-  
+
   const updateTimer = useCallback(() => {
     const [hours, minutes, seconds] = remainingTime.split(':').map(Number)
     let totalSeconds = hours * 3600 + minutes * 60 + seconds
@@ -44,16 +43,15 @@ let Timer = () => {
     totalSeconds--
     const newTime = formatTime(totalSeconds)
     setRemainingTime(newTime)
-  }, [remainingTime, setRemainingTime, formatTime]);
+  }, [remainingTime, setRemainingTime, formatTime])
 
   useEffect(() => {
-    let interval;
+    let interval
     if (isRunning && remainingTime !== '') {
       interval = setInterval(updateTimer, 1000)
     }
     return () => clearInterval(interval)
   }, [isRunning, remainingTime, updateTimer])
-
 
   const startTimer = (h = hours, m = minutes, s = seconds) => {
     const hoursValue = parseInt(h, 10)
@@ -94,11 +92,10 @@ let Timer = () => {
     const [resumeHours, resumeMinutes, resumeSeconds] = remainingTime
       .split(':')
       .map(Number)
-      const totalSeconds = resumeHours * 3600 + resumeMinutes * 60 + resumeSeconds
+    const totalSeconds = resumeHours * 3600 + resumeMinutes * 60 + resumeSeconds
     setIsRunning(true)
     setRemainingTime(formatTime(totalSeconds))
   }
-
 
   const padZero = (value) => {
     return value.toString().padStart(2, '0')
@@ -107,6 +104,7 @@ let Timer = () => {
   return (
     <>
       <div>
+        { !isRunning ? 
         <div className="timer-input-container">
           <input
             className="timer-input"
@@ -155,7 +153,8 @@ let Timer = () => {
             maxLength="2" /* Limit input to 2 characters */
             max="59" /* Set maximum input value to 59 */
           />
-        </div>
+        </div> : <span className='void'></span>
+        }
         {hours > 24 || minutes >= 60 || seconds >= 60 ? (
           <div className="validation-message">
             Please enter a valid input 24Hrs : 60Min : 60Sec.
@@ -164,23 +163,44 @@ let Timer = () => {
         {isRunning === false ? (
           <div className="validation-message">{validationMessage}</div>
         ) : null}
-        <div id="timer">{remainingTime}</div>
+        {/* Timer section */}
+
+      {isRunning ?
+        <div id="timer">{remainingTime}</div> : null
+      }
+      {!isRunning && remainingTime !== '00:00:00'?
+        <div id="timer">{remainingTime}</div> : null
+      }
       </div>
+      {/* Finish message */}
       {hasEnded === true ? (
         <div className="succes-message">You did it! Take some rest</div>
       ) : null}
+
+      {/* Buttons section */}
       <div className="input">
-        <button
-          className="task-button-timer"
-          onClick={() => startTimer(hours, minutes, seconds)}
-        >
-          start
-        </button>
-        <button className="task-button-timer" onClick={resumeTimer}>
-          resume
-        </button>
+        {isRunning === false ? (
+          <button
+            className="task-button-timer"
+            onClick={() => {
+              const newInput =
+                hours !== '00' || minutes !== '00' || seconds !== '00'
+              if (newInput) {
+                startTimer(hours, minutes, seconds)
+              } else if (remainingTime !== '00:00:00') {
+                resumeTimer()
+              } else {
+                setValidationMessage('Please enter a valid time.')
+              }
+            }}
+          >
+            <span className='button-text'>Start</span>
+            <AiOutlinePlayCircle className='icon'/>
+          </button>
+        ) : null}
         <button className="task-button-timer" onClick={() => stopTimer()}>
-          stop
+        <span className='button-text'>Stop</span>
+          <AiOutlineStop className='icon'/>
         </button>
         <audio id="timer-sound" src={timerSound} />
       </div>
